@@ -60,14 +60,14 @@ cd ../../
 
 echo -e ""
 echo -e ""
-echo -e "Enabling -O3 Optimization flags..."
+echo -e "Enabling -O3 Optimization flags and Compiling with linaro..."
 echo -e ""
 echo -e ""
 cd build/
 git checkout .
-patch -p1 < enableo3optimization.diff
+# patch -p1 < enableo3optimization.diff
+patch -p1 < enablelinaro.diff
 cd ../
-
 
 echo -e ""
 echo -e ""
@@ -76,7 +76,6 @@ echo -e ""
 read -p "Press ENTER to continue..."
 echo -e ""
 echo -e ""
-
 
 # Setup environment
 echo -e ""
@@ -89,7 +88,7 @@ echo -e ""
 # Lunch device
 echo -e ""
 echo -e ""
-echo -e "Lunching device... GT-I9082"
+echo -e "Lunching device - i9082"
 echo -e ""
 echo -e ""
 lunch carbon_i9082-userdebug
