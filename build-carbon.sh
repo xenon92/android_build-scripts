@@ -71,6 +71,16 @@ cd ../
 
 echo -e ""
 echo -e ""
+echo -e "Fixing SystemUI double - day of the week - in notification pulldown..."
+echo -e ""
+echo -e ""
+cd frameworks/base
+git checkout .
+patch -p1 < fixdoubleday.patch
+cd ../../
+
+echo -e ""
+echo -e ""
 echo -e "Patching complete... Review to see if no errors were there.."
 echo -e ""
 read -p "Press ENTER to continue..."
