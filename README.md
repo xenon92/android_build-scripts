@@ -1,4 +1,4 @@
-About
-==
+## About
 
-These are my build scripts to compile ROMs.
+
+These are my build scripts to compile custom android ROMs.
