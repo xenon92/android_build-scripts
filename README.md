@@ -6,3 +6,4 @@ These are my build scripts to compile custom android ROMs automating the process
 - Carbon ROM
 - Paranoid Android ROM
 - SlimKat ROM
+- Resurrection Remix Kitkat ROM
