@@ -26,7 +26,7 @@ echo -e ""
 echo -e ""
 cd hardware/broadcom/libbt/
 git checkout .
-patch -p1 < fixbluetooth.diff
+patch -p1 < hardware_broadcom_libbt.patch
 
 echo -e ""
 echo -e ""
@@ -36,7 +36,7 @@ echo -e ""
 cd ../../../
 cd frameworks/native/
 git checkout .
-patch -p1 < fixhwcissues.diff
+patch -p1 < frameworks_native.patch
 
 echo -e ""
 echo -e ""
@@ -45,7 +45,7 @@ echo -e ""
 echo -e ""
 cd ../av/
 git checkout .
-patch -p1 < fixavissues.diff
+patch -p1 < frameworks_av.patch
 
 echo -e ""
 echo -e ""
@@ -55,7 +55,7 @@ echo -e ""
 cd ../../
 cd external/chromium_org/
 git checkout .
-patch -p1 < fixchromiumdisablehwcomposer.diff
+patch -p1 < external_chromium_org.patch
 cd ../../
 
 echo -e ""
@@ -66,7 +66,7 @@ echo -e ""
 cd build/
 git checkout .
 # patch -p1 < enableo3optimization.diff
-patch -p1 < enablelinaro.diff
+patch -p1 < build.patch
 cd ../
 
 echo -e ""
