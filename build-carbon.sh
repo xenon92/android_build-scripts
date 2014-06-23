@@ -46,13 +46,13 @@ echo -e ""
 cd ../av/
 git checkout .
 patch -p1 < frameworks_av.patch
+cd ../../
 
 echo -e ""
 echo -e ""
 echo -e "Fixing Chromium..."
 echo -e ""
 echo -e ""
-cd ../../
 cd external/chromium_org/
 git checkout .
 patch -p1 < external_chromium_org.patch
@@ -60,14 +60,40 @@ cd ../../
 
 echo -e ""
 echo -e ""
-echo -e "Enabling -O3 Optimization flags and Compiling with linaro..."
+echo -e "Fixing looping ringtones..."
+echo -e ""
+echo -e ""
+cd frameworks/opt/telephony
+git checkout .
+patch -p1 < frameworks_opt_telephony.patch
+cd ../../
+
+echo -e ""
+echo -e ""
+echo -e "Enabling -O3 Optimization flags, LTO flag and Compiling with linaro..."
 echo -e ""
 echo -e ""
 cd build/
 git checkout .
-# patch -p1 < enableo3optimization.diff
 patch -p1 < build.patch
 cd ../
+
+cd bionic/
+git checkout .
+patch -p1 < bionic.patch
+cd ../
+
+cd art/
+git checkout .
+patch -p1 < art.patch
+cd ../
+
+cd frameworks/rs/
+git checkout .
+patch -p1 < frameworks_rs.patch
+cd ../
+
+
 
 echo -e ""
 echo -e ""
@@ -76,6 +102,8 @@ echo -e ""
 read -p "Press ENTER to continue..."
 echo -e ""
 echo -e ""
+
+
 
 # Setup environment
 echo -e ""
@@ -100,7 +128,7 @@ echo -e ""
 echo -e ""
 
 # Start compilation
-mka carbon
+make carbon -j4
 echo -e ""
 
 # Get elapsed time
@@ -115,3 +143,8 @@ echo -e ""
 echo -e "*********************ENJOY THE ROM********************"
 echo -e ""
 echo -e ""
+
+
+sleep 60
+
+~/suspend-laptop.sh
