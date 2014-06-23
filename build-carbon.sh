@@ -66,7 +66,7 @@ echo -e ""
 cd frameworks/opt/telephony
 git checkout .
 patch -p1 < frameworks_opt_telephony.patch
-cd ../../
+cd ../../../
 
 echo -e ""
 echo -e ""
