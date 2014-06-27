@@ -91,7 +91,7 @@ cd ../
 cd frameworks/rs/
 git checkout .
 patch -p1 < frameworks_rs.patch
-cd ../
+cd ../../
 
 
 
