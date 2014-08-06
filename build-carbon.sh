@@ -1,9 +1,3 @@
-echo -e ""
-echo -e ""
-echo -e "****************CARBON ROM KITKAT 4.4+****************"
-echo -e ""
-echo -e ""
-
 # Get time of startup
 res1=$(date +%s.%N)
 
@@ -19,34 +13,8 @@ echo -e "Applying patches for Galaxy Grand..."
 echo -e ""
 echo -e ""
 
-echo -e ""
-echo -e ""
-echo -e "Fixing bluetooth..."
-echo -e ""
-echo -e ""
-cd hardware/broadcom/libbt/
-git checkout .
-patch -p1 < hardware_broadcom_libbt.patch
+./patches/apply-patches.sh
 
-echo -e ""
-echo -e ""
-echo -e "Fixing HW Composer issues..."
-echo -e ""
-echo -e ""
-cd ../../../
-cd frameworks/native/
-git checkout .
-patch -p1 < frameworks_native.patch
-
-echo -e ""
-echo -e ""
-echo -e "Fixing A/V issues..."
-echo -e ""
-echo -e ""
-cd ../av/
-git checkout .
-patch -p1 < frameworks_av.patch
-cd ../../
 
 echo -e ""
 echo -e ""
@@ -54,45 +22,9 @@ echo -e "Fixing Chromium..."
 echo -e ""
 echo -e ""
 cd external/chromium_org/
-git checkout .
-patch -p1 < external_chromium_org.patch
+repo sync .
+git am 0*
 cd ../../
-
-echo -e ""
-echo -e ""
-echo -e "Fixing looping ringtones..."
-echo -e ""
-echo -e ""
-cd frameworks/opt/telephony
-git checkout .
-patch -p1 < frameworks_opt_telephony.patch
-cd ../../../
-
-echo -e ""
-echo -e ""
-echo -e "Enabling -O3 Optimization flags, LTO flag and Compiling with linaro..."
-echo -e ""
-echo -e ""
-cd build/
-git checkout .
-patch -p1 < build.patch
-cd ../
-
-cd bionic/
-git checkout .
-patch -p1 < bionic.patch
-cd ../
-
-cd art/
-git checkout .
-patch -p1 < art.patch
-cd ../
-
-cd frameworks/rs/
-git checkout .
-patch -p1 < frameworks_rs.patch
-cd ../../
-
 
 
 echo -e ""
@@ -104,7 +36,6 @@ echo -e ""
 echo -e ""
 
 
-
 # Setup environment
 echo -e ""
 echo -e ""
@@ -112,6 +43,7 @@ echo -e "Setting up build environment..."
 echo -e ""
 echo -e ""
 . build/envsetup.sh
+
 
 # Lunch device
 echo -e ""
@@ -121,30 +53,24 @@ echo -e ""
 echo -e ""
 lunch carbon_i9082-userdebug
 
+
 echo -e ""
 echo -e ""
 echo -e "Starting compilation..."
 echo -e ""
 echo -e ""
 
+
 # Start compilation
 make carbon -j4
 echo -e ""
+
 
 # Get elapsed time
 res2=$(date +%s.%N)
 echo "${bldgrn}Total time elapsed: ${txtrst}${grn}$(echo "($res2 - $res1) / 60"|bc ) minutes ($(echo "$res2 - $res1"|bc ) seconds) ${txtrst}"
 
-# Compilation complete
-echo -e ""
-echo -e ""
-echo -e "****************CARBON ROM KITKAT 4.4+****************"
-echo -e ""
-echo -e "*********************ENJOY THE ROM********************"
-echo -e ""
-echo -e ""
 
-
+# Sleep the laptop
 sleep 60
-
 ~/suspend-laptop.sh
