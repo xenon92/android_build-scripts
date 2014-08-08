@@ -48,9 +48,13 @@ echo -e "#                                     #"
 echo -e "#######################################"
 echo -e ""
 
-repo sync packages/apps/SamsungServiceMode/
-repo sync hardware/samsung/
+cd packages/apps/SamsungServiceMode
+git pull
+cd ../../../
 
+cd hardware/samsung
+git pull
+cd ../../
 
 
 
