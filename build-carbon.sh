@@ -68,7 +68,7 @@ echo -e "#       PRESS ENTER TO CONTINUE       #"
 echo -e "#                                     #"
 echo -e "#######################################"
 echo -e ""
-read -p
+read -p ""
 echo -e ""
 
 # Clear screen
