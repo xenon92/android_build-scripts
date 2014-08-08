@@ -1,12 +1,18 @@
-# Build script to compile Paranoid Android 4.0 ROM
+# Android Compiling Script
+#
+# This script automates the process of compiling android
+# operating system.
+#
+# Copyright (C) 2014 Shubhang Rathore
+#
+# This script is specifically for 
+# Paranoid Android Kitkat ROM
 
+
+
+# Clear screen
 clear
 
-echo -e ""
-echo -e ""
-echo -e "****************  PARANOID ANDROID  ****************"
-echo -e ""
-echo -e ""
 
 
 # Patches
@@ -15,49 +21,77 @@ echo -e ""
 # where the patches need to applied
 
 echo -e ""
-echo -e ""
-echo -e "Applying patches for Galaxy Grand..."
-echo -e ""
+echo -e "#######################################"
+echo -e "#                                     #"
+echo -e "#          APPLYING PATCHES           #"
+echo -e "#                                     #"
+echo -e "#######################################"
 echo -e ""
 
+
+
+
 echo -e ""
+echo -e "#######################################"
+echo -e "#                                     #"
+echo -e "#         PATCHING BLUETOOTH          #"
+echo -e "#                                     #"
+echo -e "#######################################"
 echo -e ""
-echo -e "Fixing bluetooth..."
-echo -e ""
-echo -e ""
+
 cd hardware/broadcom/libbt/
 git checkout .
 patch -p1 < hardware_broadcom_libbt.patch
 
+
+
+
 echo -e ""
+echo -e "#######################################"
+echo -e "#                                     #"
+echo -e "#       FIXING HWCOMPOSER ISSUES      #"
+echo -e "#                                     #"
+echo -e "#######################################"
 echo -e ""
-echo -e "Fixing HW Composer issues..."
-echo -e ""
-echo -e ""
+
 cd ../../../
 cd frameworks/native/
 git checkout .
 patch -p1 < frameworks_native.patch
 
+
+
+
 echo -e ""
+echo -e "#######################################"
+echo -e "#                                     #"
+echo -e "#           FIXING A/V ISSUES         #"
+echo -e "#                                     #"
+echo -e "#######################################"
 echo -e ""
-echo -e "Fixing A/V issues..."
-echo -e ""
-echo -e ""
+
 cd ../av/
 git checkout .
 patch -p1 < frameworks_av.patch
 
+
+
+
 echo -e ""
+echo -e "#######################################"
+echo -e "#                                     #"
+echo -e "#          PATCHING CHROMIUM          #"
+echo -e "#                                     #"
+echo -e "#######################################"
 echo -e ""
-echo -e "Fixing Chromium..."
-echo -e ""
-echo -e ""
+
 cd ../../
 cd external/chromium_org/
 git checkout .
 patch -p1 < external_chromium_org.patch
 cd ../../
+
+
 
 # echo -e ""
 # echo -e ""
@@ -70,14 +104,29 @@ cd ../../
 # patch -p1 < enablelinaro.diff
 # cd ../
 
+
+
+
+# Review the aove patch merges before continuing.
+# If any errors, resolve them before moving ahead with the 
+# compilation of the ROM.
+echo -e ""
+echo -e "#######################################"
+echo -e "#                                     #"
+echo -e "#          PATCHING COMPLETE          #"
+echo -e "#                                     #"
+echo -e "#      REVIEW & CHECK FOR ERRORS      #"
+echo -e "#                                     #"
+echo -e "#######################################"
 echo -e ""
 echo -e ""
-echo -e "Patching complete... Review to see if no errors were there.."
+echo -e "#######################################"
+echo -e "#                                     #"
+echo -e "#       PRESS ENTER TO CONTINUE       #"
+echo -e "#                                     #"
+echo -e "#######################################"
 echo -e ""
-echo -e ""
-echo -e ""
-read -p "Press ENTER to continue building the ROM..."
-echo -e ""
+read -p
 echo -e ""
 
 

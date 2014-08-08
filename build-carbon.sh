@@ -1,5 +1,22 @@
-# Get time of startup
+# Android Compiling Script
+#
+# This script automates the process of compiling android
+# operating system.
+#
+# Copyright (C) 2014 Shubhang Rathore
+#
+# This script is specifically for 
+# Carbon Kitkat ROM
+
+
+
+# Get time at the start of the build
 res1=$(date +%s.%N)
+
+
+# Clear screen
+clear
+
 
 
 # Patches
@@ -8,18 +25,23 @@ res1=$(date +%s.%N)
 # where the patches need to applied
 
 echo -e ""
-echo -e ""
-echo -e "Applying patches for Galaxy Grand..."
-echo -e ""
+echo -e "#######################################"
+echo -e "#                                     #"
+echo -e "#          APPLYING PATCHES           #"
+echo -e "#                                     #"
+echo -e "#######################################"
 echo -e ""
 
+# Using a different script to appy ptaches
 ./patches/apply-patches.sh
 
 
 echo -e ""
-echo -e ""
-echo -e "Fixing Chromium..."
-echo -e ""
+echo -e "#######################################"
+echo -e "#                                     #"
+echo -e "#          PATCHING CHROMIUM          #"
+echo -e "#                                     #"
+echo -e "#######################################"
 echo -e ""
 cd external/chromium_org/
 repo sync .
@@ -27,43 +49,67 @@ git am 0*
 cd ../../
 
 
+# Review the aove patch merges before continuing.
+# If any errors, resolve them before moving ahead with the 
+# compilation of the ROM.
+echo -e ""
+echo -e "#######################################"
+echo -e "#                                     #"
+echo -e "#          PATCHING COMPLETE          #"
+echo -e "#                                     #"
+echo -e "#      REVIEW & CHECK FOR ERRORS      #"
+echo -e "#                                     #"
+echo -e "#######################################"
 echo -e ""
 echo -e ""
-echo -e "Patching complete... Review to see if no errors were there.."
+echo -e "#######################################"
+echo -e "#                                     #"
+echo -e "#       PRESS ENTER TO CONTINUE       #"
+echo -e "#                                     #"
+echo -e "#######################################"
 echo -e ""
-read -p "Press ENTER to continue..."
-echo -e ""
+read -p
 echo -e ""
 
+# Clear screen
+clear
 
+echo -e ""
+echo -e "#######################################"
+echo -e "#                                     #"
+echo -e "#          BUILD ENVIRONMENT          #"
+echo -e "#                                     #"
+echo -e "#######################################"
+echo -e ""
 # Setup environment
-echo -e ""
-echo -e ""
-echo -e "Setting up build environment..."
-echo -e ""
-echo -e ""
 . build/envsetup.sh
 
 
+echo -e ""
+echo -e "#######################################"
+echo -e "#                                     #"
+echo -e "#           LUNCHING DEVICE           #"
+echo -e "#                                     #"
+echo -e "#######################################"
+echo -e ""
 # Lunch device
-echo -e ""
-echo -e ""
-echo -e "Lunching device - i9082"
-echo -e ""
-echo -e ""
 lunch carbon_i9082-userdebug
 
 
 echo -e ""
+echo -e "#######################################"
+echo -e "#                                     #"
+echo -e "#              COMPILING              #"
+echo -e "#                                     #"
+echo -e "#######################################"
 echo -e ""
-echo -e "Starting compilation..."
-echo -e ""
-echo -e ""
-
 
 # Start compilation
 make carbon -j4
 echo -e ""
+
+
+###### END OF BUILD ######
 
 
 # Get elapsed time
