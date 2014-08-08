@@ -38,6 +38,22 @@ git clone https://xenon92@bitbucket.org/xenon92/android_patches.git patches
 
 
 
+
+# Syncing few repos
+echo -e ""
+echo -e "#######################################"
+echo -e "#                                     #"
+echo -e "#            SYNCING REPOS            #"
+echo -e "#                                     #"
+echo -e "#######################################"
+echo -e ""
+
+repo sync packages/apps/SamsungServiceMode/
+repo sync hardware/samsung/
+
+
+
+
 # Applying patches
 echo -e ""
 echo -e "#######################################"
