@@ -24,6 +24,21 @@ clear
 # Put the *.patch or *.diff file in the base folder of each indivisual repo
 # where the patches need to applied
 
+
+
+# Cloning patches
+echo -e ""
+echo -e "#######################################"
+echo -e "#                                     #"
+echo -e "#          CLONING PATCHES            #"
+echo -e "#                                     #"
+echo -e "#######################################"
+echo -e ""
+
+git clone https://xenon92@bitbucket.org/xenon92/android_patches.git patches
+
+
+
 echo -e ""
 echo -e "#######################################"
 echo -e "#                                     #"
@@ -70,6 +85,12 @@ echo -e "#######################################"
 echo -e ""
 read -p ""
 echo -e ""
+
+
+# Remove patches from the source
+rm -rf patches
+
+
 
 # Clear screen
 clear
