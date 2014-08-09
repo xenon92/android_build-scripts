@@ -34,7 +34,7 @@ echo -e "#                                     #"
 echo -e "#######################################"
 echo -e ""
 
-git clone https://xenon92@bitbucket.org/xenon92/android_patches.git patches
+git clone https://xenon92@bitbucket.org/xenon92/android_patches.git patches -b pa-kk
 
 
 
