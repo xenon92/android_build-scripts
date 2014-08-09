@@ -114,6 +114,9 @@ rm -rf patches
 clear
 
 
+export KBUILD_BUILD_USER="shubhang"
+export KBUILD_BUILD_HOST="neon"
+
 
 # Running the Paranoid Android script
 # (replace 'i9082' with your own device)
