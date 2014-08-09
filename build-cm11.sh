@@ -106,8 +106,14 @@ echo -e ""
 read -p ""
 echo -e ""
 
+
+# Remove patches from the source
+rm -rf patches
+
+
 # Clear screen
 clear
+
 
 echo -e ""
 echo -e "#######################################"
@@ -152,9 +158,6 @@ echo -e ""
 
 ###### END OF BUILD ######
 
-
-# Remove patches from the source
-rm -rf patches
 
 
 # Get elapsed time
