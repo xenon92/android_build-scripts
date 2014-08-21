@@ -127,8 +127,11 @@ echo -e ""
 
 
 
+# Override flags
 export KBUILD_BUILD_USER="shubhang"
 export KBUILD_BUILD_HOST="neon"
+
+export RELEASE_TYPE=NIGHTLY
 
 
 
